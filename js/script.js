@@ -49,7 +49,7 @@ $(document).ready(function()
 			// We're done loading the tweets, so hide the overlay and update the UI
 			$("#overlay").fadeOut();
 			$("#pageCount").html(currentPage);
-			$("#tweetCount").html(currentPage * pageSize);
+			$("#tweetCount").html( data.length+Math.max( $("#tweetCount").html()*1 , 0 ) );
 		});
 		
 	};

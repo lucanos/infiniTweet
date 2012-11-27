@@ -35,8 +35,11 @@ $(document).ready(function()
 	
 	// Loads the next tweets
 	var loadTweets = function() {
-		var url = "http://twitter.com/status/user_timeline/"
-				+ username + ".json?count="+pageSize+"&page="+currentPage+"&callback=?";
+		var url = "https://api.twitter.com/1/statuses/user_timeline.json"
+              + "?screen_name=" + username
+              + "&count=" + pageSize
+              + "&page=" + currentPage
+              + "&callback=?";
 				
 		$.getJSON(url,function(data) {
 			$.each(data, function(i, post) {

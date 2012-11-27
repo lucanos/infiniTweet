@@ -79,17 +79,20 @@ The loadTweets() code is wrapped inside a function, since we'll need to call it 
 ```
 // Loads the next tweets
 var loadTweets = function() {
-   var url = "http://twitter.com/status/user_timeline/"
-         + username + ".json?count="+pageSize+"&page="+currentPage+"&callback=?";
+  var url = "https://api.twitter.com/1/statuses/user_timeline.json"
+              + "?screen_name=" + username
+              + "&count=" + pageSize
+              + "&page=" + currentPage
+              + "&callback=?";
          
-   $.getJSON(url,function(data) {
-      $.each(data, function(i, post) {
-         appendTweet(post.text, post.id);
-      });
+  $.getJSON(url,function(data) {
+    $.each(data, function(i, post) {
+      appendTweet(post.text, post.id);
+    });
       
-      // We're done loading the tweets, so hide the overlay
-      $("#overlay").fadeOut();
-   });
+    // We're done loading the tweets, so hide the overlay
+    $("#overlay").fadeOut();
+  });
 };
 ```
 
